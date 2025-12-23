@@ -1,0 +1,436 @@
+/* Bootstrap Overrides & Custom Theme */
+:root {
+    /* Custom Palette */
+    --navy: #0a192f;
+    --light-navy: #112240;
+    --lightest-navy: #233554;
+    --slate: #8892b0;
+    --light-slate: #a8b2d1;
+    --lightest-slate: #ccd6f6;
+    --white: #e6f1ff;
+    --green: #64ffda;
+
+    --bs-font-sans-serif: 'Inter', sans-serif;
+    --bs-font-monospace: 'Fira Code', monospace;
+
+    /* Bootstrap Override Mappings for Dark Mode (Default) */
+    --bs-body-bg: var(--navy);
+    --bs-body-color: var(--slate);
+    --bs-link-color: var(--green);
+    --bs-link-hover-color: var(--green);
+}
+
+[data-bs-theme="light"] {
+    --navy: #ffffff;
+    --light-navy: #f8fafc;
+    --lightest-navy: #e2e8f0;
+    --slate: #475569;
+    --light-slate: #334155;
+    --lightest-slate: #0f172a;
+    --white: #0a192f;
+    --green: #0d9488;
+
+    --bs-body-bg: var(--navy);
+    --bs-body-color: var(--slate);
+}
+
+/* Typography Utilities */
+.font-mono {
+    font-family: var(--bs-font-monospace);
+}
+
+.text-green {
+    color: var(--green) !important;
+}
+
+.text-slate {
+    color: var(--slate) !important;
+}
+
+.text-light-slate {
+    color: var(--light-slate) !important;
+}
+
+.text-lightest-slate {
+    color: var(--lightest-slate) !important;
+}
+
+/* Backgrounds */
+.bg-navy {
+    background-color: var(--navy) !important;
+}
+
+.bg-light-navy {
+    background-color: var(--light-navy) !important;
+}
+
+/* Navbar */
+.navbar {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    background-color: rgba(var(--navy-rgb), 0.85);
+    /* fallback */
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: rgba(10, 25, 47, 0.85);
+}
+
+[data-bs-theme="light"] .navbar {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.nav-link {
+    color: var(--lightest-slate) !important;
+}
+
+.nav-link:hover {
+    color: var(--green) !important;
+}
+
+/* Custom Buttons */
+.btn-outline-green {
+    color: var(--green);
+    border-color: var(--green);
+    font-family: var(--bs-font-monospace);
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.btn-outline-green:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--green);
+    border-color: var(--green);
+    transform: translateY(-3px);
+}
+
+[data-bs-theme="light"] .btn-outline-green:hover {
+    background-color: rgba(13, 148, 136, 0.1);
+}
+
+/* Cards */
+.project-card,
+.card {
+    transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.project-card:hover,
+.card:hover {
+    transform: translateY(-7px);
+}
+
+/* Tabs */
+.custom-tabs .nav-link {
+    color: var(--slate);
+    border-left: 2px solid var(--lightest-navy);
+    border-radius: 0;
+}
+
+.custom-tabs .nav-link:hover {
+    background-color: var(--light-navy);
+    color: var(--green);
+}
+
+.custom-tabs .nav-link.active {
+    background-color: var(--light-navy);
+    color: var(--green);
+    border-left-color: var(--green);
+}
+
+/* Hero Profile */
+.profile-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.profile-wrapper:hover {
+    /* No scale on wrapper */
+    z-index: 20;
+}
+
+/* New Container for masking */
+.profile-image-container {
+    width: 300px;
+    height: 300px;
+    border: 2px solid var(--green);
+    overflow: hidden;
+    /* Clips the zooming image */
+    background-color: var(--navy);
+    transition: border-color 0.3s;
+}
+
+[data-bs-theme="light"] .profile-image-container {
+    background-color: #9ca3af;
+    /* Thick ash color for day mode */
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: none;
+}
+
+/* Zoom Image inside container on Hover */
+.profile-wrapper:hover .profile-img {
+    transform: scale(1.1);
+}
+
+/* Remove individual hover scale from image selector */
+.profile-img:hover {
+    /* controlled by wrapper hover */
+}
+
+.profile-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    border: 1px solid var(--green);
+    opacity: 1;
+    z-index: 1;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
+}
+
+/* Multi-wave Ripple Effect */
+.profile-glow::before,
+.profile-glow::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 50%;
+    border: 1px solid var(--green);
+    opacity: 0;
+    z-index: -1;
+    animation: ripple 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.profile-glow::after {
+    animation-delay: 1.5s;
+}
+
+/* Optional: Intensify glow on hover */
+.profile-wrapper:hover .profile-glow {
+    border-color: var(--green);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Floating Tech Badges */
+.tech-badge {
+    position: absolute;
+    background-color: var(--light-navy);
+    border: 1px solid var(--green);
+    color: var(--green);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-family: var(--bs-font-monospace);
+    z-index: 3;
+    animation: float 4s ease-in-out infinite;
+    white-space: nowrap;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+[data-bs-theme="light"] .tech-badge {
+    background-color: #e2e8f0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-color: rgba(13, 148, 136, 0.3);
+}
+
+.badge-1 {
+    top: 0;
+    left: -20px;
+    animation-delay: 0s;
+}
+
+.badge-2 {
+    bottom: 20px;
+    right: -20px;
+    animation-delay: 1.5s;
+}
+
+.badge-3 {
+    bottom: -10px;
+    left: 20px;
+    animation-delay: 2.5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Badge Images */
+.tech-badge img {
+    margin-right: 8px;
+    height: 20px;
+    width: 20px;
+}
+
+/* Offcanvas Mobile Menu Styling */
+.offcanvas.blur-bg {
+    background-color: rgba(10, 25, 47, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-left: 1px solid var(--green);
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.offcanvas-body {
+    padding: 30px 20px;
+}
+
+.offcanvas .nav-link {
+    padding: 12px 0;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.offcanvas .nav-link:hover {
+    color: var(--green) !important;
+    transform: translateX(5px);
+}
+
+.offcanvas .btn-outline-green {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Navbar toggler icon */
+.navbar-toggler {
+    border: 1px solid var(--green);
+    padding: 8px 12px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(100, 255, 218, 0.25);
+}
+
+/* Responsive Fixes */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: var(--light-navy);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+
+    /* Reduce profile section size on mobile/tablet */
+    .profile-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-image-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* Adjust tech badges for smaller profile */
+    .tech-badge {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+    }
+
+    .badge-1 {
+        top: -10px;
+        left: -15px;
+    }
+
+    .badge-2 {
+        bottom: 10px;
+        right: -15px;
+    }
+
+    .badge-3 {
+        bottom: -5px;
+        left: 10px;
+    }
+
+    /* Tablet: Limit offcanvas menu height to half screen */
+    .offcanvas.blur-bg {
+        height: 50vh !important;
+        max-height: 50vh;
+    }
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 575.98px) {
+    .profile-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+
+    .profile-image-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .tech-badge {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+    }
+
+    /* Further adjust badge positions */
+    .badge-1 {
+        top: -8px;
+        left: -10px;
+    }
+
+    .badge-2 {
+        bottom: 8px;
+        right: -10px;
+    }
+
+    .badge-3 {
+        bottom: -3px;
+        left: 8px;
+    }
+
+    /* Ensure navbar toggler is visible */
+    .navbar-toggler {
+        border-color: var(--green) !important;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(100, 255, 218)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    /* Mobile-only: Limit offcanvas menu height to half screen */
+    .offcanvas.blur-bg {
+        height: 50vh !important;
+        max-height: 50vh;
+    }
+}
