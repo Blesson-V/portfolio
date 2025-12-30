@@ -30,7 +30,26 @@
         <div class="container">
             <a class="navbar-brand font-mono text-green fw-bold" href="#">Blesson V.</a>
 
-            <button class="navbar-toggler border-0 text-green" type="button" data-bs-toggle="offcanvas"
+            <!-- Mobile-Visible Toolbar (Resume & Theme) -->
+            <div class="d-flex align-items-center gap-3 ms-auto ms-lg-4 order-lg-last me-3 me-lg-0">
+                <a href="assets/resume.pdf" target="_blank"
+                    class="btn btn-outline-green btn-sm px-3 py-2 font-mono small d-none d-sm-inline-block">
+                    <i data-lucide="download" class="me-1" style="width: 16px; height: 16px;"></i>Resume
+                </a>
+                <!-- Mobile Rename Icon: Use Icon only on very small screens if needed, simplified here -->
+                <a href="assets/resume.pdf" target="_blank"
+                    class="btn btn-outline-green btn-sm px-2 py-2 font-mono small d-inline-block d-sm-none">
+                    <i data-lucide="download" style="width: 16px; height: 16px;"></i>
+                </a>
+
+                <button class="btn border-0 text-green d-flex align-items-center p-0" id="theme-btn"
+                    aria-label="Toggle theme">
+                    <i data-lucide="moon" class="d-none" id="moon-icon"></i>
+                    <i data-lucide="sun" class="d-none" id="sun-icon"></i>
+                </button>
+            </div>
+
+            <button class="navbar-toggler border-0 text-green ms-0" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <i data-lucide="menu"></i>
             </button>
@@ -54,22 +73,8 @@
                                 Skills</a></li>
                         <li class="nav-item"><a class="nav-link" href="#education"><span class="text-green">05.</span>
                                 Education</a></li>
-                        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                            <a href="#contact" class="btn btn-outline-green btn-sm px-3 py-2">Contact</a>
-                        </li>
-                        <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
-                            <a href="assets/resume.pdf" target="_blank"
-                                class="btn btn-outline-green btn-sm px-3 py-2"><i data-lucide="download" class="me-1"
-                                    style="width: 16px; height: 16px;"></i>Resume</a>
-                        </li>
-                        <!-- Theme Toggle -->
-                        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                            <button class="btn border-0 text-green d-flex align-items-center" id="theme-btn"
-                                aria-label="Toggle theme">
-                                <i data-lucide="moon" class="d-none" id="moon-icon"></i>
-                                <i data-lucide="sun" class="d-none" id="sun-icon"></i>
-                            </button>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#contact"><span class="text-green">06.</span>
+                                Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -402,8 +407,45 @@
         </div>
     </section>
 
+    <!-- Social Sidebar (Left Fixed) -->
+    <div class="social-sidebar d-none d-md-block" data-aos="fade-right" data-aos-delay="500">
+        <ul class="social-nav">
+            <li class="social-item">
+                <a href="https://github.com/Blesson-V" class="social-link" target="_blank" aria-label="GitHub">
+                    <i data-lucide="github"></i>
+                </a>
+            </li>
+            <li class="social-item">
+                <a href="https://www.linkedin.com/in/blesson-v-b47b6133b" class="social-link" target="_blank"
+                    aria-label="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+            </li>
+            <li class="social-item">
+                <a href="https://www.youtube.com/@SyncWithBlesson" class="social-link" target="_blank"
+                    aria-label="YouTube">
+                    <i data-lucide="youtube"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <!-- Footer / Contact Section -->
     <footer id="contact" class="text-center py-5 font-mono text-slate small">
+        <!-- Footer Social Links (Visible on Mobile/Tablet) -->
+        <div class="footer-social-links mb-4 d-md-none">
+            <a href="https://github.com/Blesson-V" class="social-link" target="_blank" aria-label="GitHub">
+                <i data-lucide="github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/blesson-v-b47b6133b" class="social-link" target="_blank"
+                aria-label="LinkedIn">
+                <i data-lucide="linkedin"></i>
+            </a>
+            <a href="https://www.youtube.com/@SyncWithBlesson" class="social-link" target="_blank" aria-label="YouTube">
+                <i data-lucide="youtube"></i>
+            </a>
+        </div>
+
         <div class="mb-4">
             <a href="tel:+918754554798" class="btn btn-outline-green me-3 py-3 px-4"><i data-lucide="phone"
                     class="me-2"></i>Call Me</a>

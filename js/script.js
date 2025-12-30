@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Initialize logic based on saved preference or default to dark
     const savedTheme = localStorage.getItem('theme') || 'dark';
-    htmlElement.setAttribute('data-bs-theme', savedTheme); // Set initial theme directly
-    // The setTheme function will handle localStorage and icon updates on subsequent changes
+    setTheme(savedTheme);
 
     // 2. Button Click Handler
     if (themeBtn) {

@@ -18,6 +18,8 @@
     --bs-body-color: var(--slate);
     --bs-link-color: var(--green);
     --bs-link-hover-color: var(--green);
+
+    --navbar-bg-rgb: 10, 25, 47;
 }
 
 [data-bs-theme="light"] {
@@ -32,6 +34,8 @@
 
     --bs-body-bg: var(--navy);
     --bs-body-color: var(--slate);
+
+    --navbar-bg-rgb: 255, 255, 255;
 }
 
 /* Typography Utilities */
@@ -68,17 +72,9 @@
 .navbar {
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    background-color: rgba(var(--navy-rgb), 0.85);
+    background-color: rgba(var(--navbar-bg-rgb), 0.85);
     /* fallback */
     box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-}
-
-[data-bs-theme="dark"] .navbar {
-    background-color: rgba(10, 25, 47, 0.85);
-}
-
-[data-bs-theme="light"] .navbar {
-    background-color: rgba(255, 255, 255, 0.85);
 }
 
 .nav-link {
@@ -299,7 +295,7 @@
 
 /* Offcanvas Mobile Menu Styling */
 .offcanvas.blur-bg {
-    background-color: rgba(10, 25, 47, 0.95) !important;
+    background-color: rgba(var(--navbar-bg-rgb), 0.95) !important;
     backdrop-filter: blur(10px);
     border-left: 1px solid var(--green);
 }
@@ -432,5 +428,68 @@
     .offcanvas.blur-bg {
         height: 50vh !important;
         max-height: 50vh;
+    }
+}
+
+/* Social Sidebar (Desktop) */
+.social-sidebar {
+    position: fixed;
+    bottom: 0;
+    right: 40px;
+    z-index: 100;
+}
+
+.social-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.social-nav::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 90px;
+    margin: 0 auto;
+    background-color: var(--light-slate);
+}
+
+.social-item {
+    margin-bottom: 20px;
+}
+
+.social-link {
+    display: inline-block;
+    color: var(--light-slate);
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.social-link:hover {
+    color: var(--green);
+    transform: translateY(-5px) scale(1.1);
+}
+
+.social-link svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Footer Social Icons (Mobile/All) */
+.footer-social-links .social-link {
+    margin: 0 15px;
+    color: var(--slate);
+}
+
+.footer-social-links .social-link:hover {
+    color: var(--green);
+}
+
+/* Hide Sidebar on smaller screens */
+@media (max-width: 768px) {
+    .social-sidebar {
+        display: none;
     }
 }
